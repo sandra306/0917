@@ -1,0 +1,234 @@
+@charset "utf-8";
+
+/*  reset  */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+img {
+    border: none;
+}
+
+html {
+    font-size: 0.625em;
+}
+
+body {
+    font: 1.2rem/1.6 Arial, sans-serif;
+    color: #555;
+}
+
+.blind {
+    position: absolute;
+    text-indent: -9999px;
+    font-size: 0;
+    line-height: 0;
+}
+
+/* header */
+
+
+/*
+.back_header {
+    height: 200px;
+    background-color: #fff;
+    padding-top: 40px;
+    opacity: 0.5;
+}*/
+
+header {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+    margin: -50px;
+    
+}
+
+
+
+h1 img {
+    width: 200px;
+}
+
+nav {
+    position: fixed;
+    top: 50%;
+    left: 850px;
+    top: 200px;
+}
+#navi {
+    background: white;
+    width: 1903px;
+    height: 280px;
+}
+nav a {
+    display: block;
+    width: 200px;
+    height: 60px;
+    font-size: 1.4rem;
+    color: #000;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    opacity: 0.8;
+    transition: all 0.5s;
+}
+
+nav a:hover,
+nav a:focus,
+nav li.on a {
+    font-size: 2.4rem;
+    opacity: 1;
+}
+nav li:nth-child(1) {
+    position: absolute;
+    left: -160px;
+}
+nav li:nth-child(3) {
+    position: absolute;
+    left: 160px;
+    top: 0px;
+}
+nav li:nth-child(1) a:hover,
+nav li:nth-child(1) a:focus,
+nav li:nth-child(1).on a {
+    color: #f0616e;
+    border-bottom: 5px dashed #f0616e;
+    font-weight: bold;
+}
+
+nav li:nth-child(2) a:hover,
+nav li:nth-child(2) a:focus,
+nav li:nth-child(2).on a {
+    color: #f0616e;
+    border-bottom: 5px dashed #f0616e;
+    font-weight: bold;
+}
+
+nav li:nth-child(3) a:hover,
+nav li:nth-child(3) a:focus,
+nav li:nth-child(3).on a {
+    color: #f0616e;
+    border-bottom: 5px dashed #f0616e;
+    font-weight: bold;
+}
+
+
+/* main */
+
+section {
+    width: 100%;
+    height: 900px;
+    position: relative;
+    background-size: cover;
+    background-position: right center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+section:nth-child(1) {
+    background-image: url(img/macaroon_entire.jpg);
+    opacity: 0.7;
+}
+section:nth-child(2) {
+    background-image: url(img/ttongcaroon_entire.JPG);
+    opacity: 0.7;
+}
+
+section:nth-child(3) {
+    background-image: url(img/daku_entire.JPG);
+    opacity: 0.7;
+}
+section div {
+    position: absolute;
+    top: 46%;
+    left: 300px;
+    z-index: 11;
+}
+
+section div h3 {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+section div p {
+    font-size: 1.6rem;
+}
+
+section:nth-child(1) h3 {
+    color: #d4164c;
+}
+
+section:nth-child(1) p {
+    color: #111;
+}
+
+section:nth-child(2) h3 {
+    color: #fff;
+}
+
+section:nth-child(2) p {
+    color: #fff;
+}
+
+section:nth-child(3) h3 {
+    color: #fff;
+}
+
+section:nth-child(3) p {
+    color: #ffec6a;
+}
+
+section:nth-child(4) h3 {
+    color: #005a89;
+}
+
+section:nth-child(4) p {
+    color: #111;
+}
+section #macaroon_items {
+    position: absolute;
+    top: 400px;
+}
+section #macaroon_items a {
+    margin-left: 50px;
+}
+section #macaroon_items a img {
+    width: 450px;
+    height: 450px;
+}
+section #macaroon_items a:first-child {
+    margin-left: -80px;
+}
+section #ttongcaroon_items {
+    position: absolute;
+    top: 400px;
+}
+section #ttongcaroon_items a {
+    margin-left: 50px;
+}
+section #ttongcaroon_items a:first-child {
+    margin-left: -80px;
+}
+section #daku_items {
+    position: absolute;
+    top: 400px;
+}
+section #daku_items a {
+    margin-left: 50px;
+}
+section #daku_items a:first-child {
+    margin-left: -80px;
+}

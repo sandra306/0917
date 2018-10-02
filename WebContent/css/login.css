@@ -1,0 +1,159 @@
+@charset "utf-8";
+@import url("shop.css");
+
+#container {
+    width: 1653px;
+    height: auto;
+    overflow: hidden;
+    margin-top: 300px;
+    margin-left: 250px;
+}
+#loginForm {
+    border: 1px solid gray;
+    border-radius: 15px;
+    width: 500px;
+    height: 500px;
+    margin-left: 450px;
+    overflow: hidden;
+}
+#m_l {
+    margin-left: 170px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+#login_1 {
+    float: left;
+    border: 1px solid black;
+    width: 300px;
+    height: 30px;
+    margin-left: 95px;
+    margin-top: 60px;
+    opacity: 0.5;
+}
+#id_text {
+    float: left;
+    margin-left: 20px;
+    margin-top: 6px;
+    font-size: 12px;
+}
+#login_1 input {
+    margin-left: 70px;
+    margin-top: 6.5px;
+}
+#pwd {
+    float: left;
+    border: 1px solid black;
+    width: 300px;
+    height: 30px;
+    margin-left: 95px;
+    margin-top: 20px;
+    opacity: 0.5;
+}
+#pwd_text {
+    float: left;
+    margin-left: 20px;
+    margin-top: 6px;
+    font-size: 12px;
+}
+#pwd input {
+    margin-left: 30px;
+    margin-top: 6.5px;
+}
+#login_1:hover {
+    opacity: 1;
+}
+#pwd:hover {
+    opacity: 1;
+}
+#loginForm a {
+    text-decoration: none;
+    color: black;
+}
+#submit {
+    margin-top: 170px;
+    margin-left: 96px;
+    background: white;
+    border: 1px solid gray;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+}
+#submit:hover {
+    background: gray;
+    color: white;
+}
+#find {
+    margin-left: 100px;
+    margin-top: 5px;
+}
+#find a {
+    font-size: 13px;
+    opacity: 0.5;
+}
+#find a:first-child {
+    border-right: 1px solid gray;
+    padding-right: 5px;
+}
+#find a:last-child {
+    border-left: 1px solid gray;
+    padding-left: 5px;
+    margin-left: -4px;
+}
+#find a:hover {
+    opacity: 1;
+}
+#loginForm a #join {
+    margin-top: 50px;
+    margin-left: 96px;
+    background: grey;
+    border: 1px solid grey;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: white;
+}
+#loginForm a #join:hover {
+    background: white;
+    color: black;
+}
+#check {
+    margin-top: 200px;
+    margin-left: 00px;
+    overflow: hidden;
+    position: relative;
+    width: 600px;
+    height: 150px;
+}
+#check input:first-child {
+    float: left;
+    width: 300px;
+    background-color: #ff9999;
+    border: 1px solid #ff9999;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    margin-left: 95px;
+}
+#check input:last-child {
+    float: left;
+    width: 300px;
+    background-color: #fffff5;
+    color: gray;
+    height: 50px;
+    font-size: 20px;
+    left: 95px;
+    top: 60px;
+    position: absolute;
+}
+#check input:first-child:hover {
+    background: #fffff5;
+    color: gray;
+}
+#check input:last-child:hover {
+    background: #ff9999;
+    color: white;
+}

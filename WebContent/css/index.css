@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import url("shop.css");
+
+.slideshow {
+    position: absolute;
+    top: 0px;
+}
+.slideshow img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: 0px;
+    width: 1910px;
+    height: 950px;
+}
+

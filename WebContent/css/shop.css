@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    background: #fffff5;
+}
+header {
+    background: white;
+    opacity: 0.8;
+    width: 1920px;
+    height: 170px;
+}
+#menu {
+    overflow: hidden;
+    float: left;
+    margin-left: 140px;
+    margin-top: 40px;
+}
+#menu a {
+    float: left;
+    margin-left: 50px;
+    text-decoration: none;
+    font-size: 18px;
+    color: gray;
+}
+#menu a:hover {
+    color: #f0616e;
+    border-bottom: 1px dashed #f0616e;
+    font-weight: bold;
+}
+#logo {
+    width: 400px;
+    height: 139px;
+    position: absolute;
+    margin-left: 755px;
+    margin-top: 6px;
+}
+#login_cart {
+    overflow: hidden;
+    float: left;
+    margin-left: 950px;
+    margin-top: 40px;
+}
+#login_cart a {
+    float: left;
+    margin-left: 50px;
+    text-decoration: none;
+    color: gray;
+    font-size: 18px;
+}
+#login_cart a:hover {
+    color: #f0616e;
+    border-bottom: 1px dashed #f0616e;
+    font-weight: bold;
+}
+.slideshow {
+    position: absolute;
+    top: 0px;
+}
+.slideshow img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: 0px;
+    width: 1920px;
+    height: 969px;
+    opacity: 1;
+}
+li,ul {list-style:none}
+a {text-decoration:none}
+.page-main {
+    position: relative;
+}
+
+.page-main > aside {
+    background-color: #f0616e;
+    width: 350px;
+    height: 100%;
+    top: 170px;
+    left: -350px;
+    position: fixed;
+    opacity: 0.7;
+}
+
+.page-main > aside ul {
+    margin: 0;
+    padding: 0;
+    top: 50px;
+    left: 114px;
+    position: absolute;
+}
+
+.page-main > aside li {
+    margin: 0 0 20px;
+    list-style: none;
+}
+
+.page-main > aside button {
+    background-color: #f0616e;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 350px;
+    width: 52px;
+    height: 132px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0px 15px 15px 0px;
+}
+button {
+    color: white;
+    font-weight: bold;
+}

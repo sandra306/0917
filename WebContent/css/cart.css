@@ -1,0 +1,72 @@
+@charset "utf-8";
+@import url("shop.css");
+
+#wrap {
+    width: 1550px;
+    height: auto;
+    margin-top: 250px;
+    margin-left: 200px;
+    overflow: hidden;
+}
+#text {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: gray;
+    padding-bottom: 50px;
+}
+#head {
+    font-size: 15px;
+    color: gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 20px;
+}
+#center_img {
+    border-bottom: 1px solid gray;
+    width: auto;
+    height: 300px;
+    overflow: hidden;
+}
+#center_img div {
+    float: left;
+}
+#item_img {
+    background: red;
+    width: 250px;
+    height: 250px;
+    margin-top: 25px;
+}
+#amount {
+    margin-left: 650px;
+    margin-top: 140px;
+}
+#price {
+    margin-left: 380px;
+    margin-top: 140px;
+}
+#buy {
+    float: left;
+    margin-left: 1160px;
+    font-size: 15px;
+    padding-top: 50px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 20px;
+}
+#total {
+    float: left;
+    margin-top: 0px;
+}
+#buy input {
+    float: left;
+    margin-left: 250px;
+    margin-top: -30px;
+    background: #ff9999;
+    border: 1px solid #ff9999;
+    padding: 10px 30px;
+    color: white;
+}
+#buy input:hover {
+    border: 1px solid #ff9999;
+    background: #fffff5;
+    color: gray;
+}
