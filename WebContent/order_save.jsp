@@ -62,7 +62,12 @@
  
   if (cnt >0) {
    for (int i=0; i< a.length ;i++) {
-    long pid =Long.parseLong(a[i].trim());
+    long pid = 0;
+    try{
+    	pid =Long.parseLong(a[i].trim());
+    }catch(NumberFormatException e){
+ 	   continue;
+    }
     qty = ((Integer)session.getValue(a[i])).intValue();
     num=i+1;
     sql = "select pname,downprice from 20162422_product where id="+pid; 
