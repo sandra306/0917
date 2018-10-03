@@ -99,14 +99,9 @@
 		<td bgcolor="#fffff5">
 		<font size="-1" color="#fffff5">
 		<select name="category" size="1">
-<%
-ResultSet rs = DBCon.execSql("select * from 20162422_category");
-while(rs.next()){
-%>
-            <option value=<%=rs.getInt("category") %>><%=rs.getString("catename") %></option>
-<%
-}
-%>
+            <option value=11>마카롱</option>
+            <option value=22>뚱카롱</option>
+            <option value=33>다쿠와즈</option>
 		</select>
 		</font>
 		</td>

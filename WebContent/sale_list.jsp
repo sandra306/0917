@@ -92,7 +92,12 @@
   st = con.createStatement();
  
   for (int i=0; i< a.length ;i++) {
-   id =Long.parseLong(a[i].trim());
+   id = 0;
+   try{
+   	id =Long.parseLong(a[i].trim());
+   }catch(NumberFormatException e){
+	   continue;
+   }
    qty = ((Integer)session.getValue(a[i])).intValue();
    sql = "select * from 20162422_product where id=" + id; 
    rs = st.executeQuery(sql);

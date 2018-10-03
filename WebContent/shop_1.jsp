@@ -146,6 +146,7 @@ try{
   else {
 	
 	stocki = rs.getInt("stock");
+	long id = rs.getLong("id");
 	String fileName1 = url + rs.getString("small");
 	String fileName2 = url + rs.getString("large");
 	dPrice = rs.getLong("downprice");
@@ -166,7 +167,7 @@ try{
      
    
     	
-     //out.println("<INPUT type=hidden name=id value="+id+">");
+     out.println("<INPUT type=hidden name=id value="+id+">");
      out.println("<INPUT type=hidden name=go value="+where+">");
      out.println("<INPUT type=hidden name=cat value="+ca+">");
      out.println("<INPUT type=hidden name=pname value="+pn+">");

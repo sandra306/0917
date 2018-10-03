@@ -16,7 +16,17 @@
     <script src="js/shop.js"></script>
     <title></title>
  <script>  
- 
+
+var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+ window.onload =function(){
+	 document.querySelector('#user_id').onkeyup = function(event){
+	 	if(check.test(this.value)){
+	 		alert('한글은 아이디로 사용할 수없습니다.');
+	 		this.value="";
+	 		return false;
+	 	}
+	}
+ } 
  
  function fn_press_han(obj)
  {
@@ -27,8 +37,6 @@
      obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
  }
 
- 
- 
   function selmail(){
 	  var mail = document.aform.femail3.value;
 	  document.aform.femail2.value = mail;
@@ -147,7 +155,7 @@
       <b>아이디</b>
     </td>
     <td width="552">
-		<input type="text" name="user_id" size="12" maxlength="12">	
+		<input type="text" name="user_id" size="12" maxlength="12" id="user_id">	
 		<input name=idcheck type="button" onClick="checkid()" value="ID중복확인" class="login_b">
 		(영소문자, 숫자만 가능)
 	</td>
