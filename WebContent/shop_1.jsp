@@ -1,3 +1,4 @@
+<%@page import="com.somin.shop.common.DBCon"%>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %> 
 <% request.setCharacterEncoding("utf-8"); %>
@@ -128,97 +129,44 @@
  int totalrows=0;
  int totalpages=0;
  
- long id=0;
+
+String sql = "select * from 20162422_product  where id=" + request.getParameter("id");
+        System.out.println(sql);
  %>
   <div id="container">
+        <% 
+long dPrice = 0;
+String pName  = "";
+String descript = "";
+
+try{
+	ResultSet rs = DBCon.execSql(sql);
+  if (!(rs.next()))  
+   	out.println("상품이 없습니다");
+  else {
+	
+	stocki = rs.getInt("stock");
+	String fileName1 = url + rs.getString("small");
+	String fileName2 = url + rs.getString("large");
+	dPrice = rs.getLong("downprice");
+	pName = rs.getString("pname");
+	descript = rs.getString("description");
+%>
+
        <div id="main_img">
-            <%  out.println("<IMG border=0 width=600 height=600 src=\""+filename+"\">");%>
+            <%  out.println("<IMG border=0 width=600 height=600 src=\""+fileName1+"\">");%>
        </div>
        <div id="img">
-           <div id="img_1"><a href="#"></a></div>
+           <div id="img_1"><a href="#"><IMG border=0 width=600 height=600 src="<%=fileName2%>"></a></div>
            <div id="img_2"><a href="#"></a></div>
            <div id="img_3"><a href="#"></a></div>
        </div>
-        <% 
-
- 
- Connection con= null;
- Statement st =null;
- ResultSet rs =null;
- 
- try {
-	 Class.forName("com.mysql.jdbc.Driver");
- } catch (ClassNotFoundException e ) {
-  out.println(e);
- }
- 
- try{
-	 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb", "root", "multi2018");
- } catch (SQLException e) {
-  out.println(e);
- }
- 
- try {
-  st = con.createStatement();
-  String sql = "select * from 20162422_product" ;
-  sql = sql+ cond+  " order by id desc";
-  rs = st.executeQuery(sql);
- 
-  if (!(rs.next()))  
-   out.println("상품이 없습니다");
-  else {
-   do {
-    keyid.addElement(new Long(rs.getLong("id")));
-    pname.addElement(rs.getString("pname"));
-    price.addElement(new Integer(rs.getInt("price")));
-    dprice.addElement(new Integer(rs.getInt("downprice"))); 
-    stock.addElement(new Integer(rs.getInt("stock")));
-    description.addElement(rs.getString("description"));
-  
-    large.addElement(rs.getString("large"));
-   }while(rs.next());
-      
-   totalrows = pname.size();
-   totalpages = (totalrows-1)/maxrows +1;
- 
-   startrow = (where-1) * maxrows;
-   endrow = startrow+maxrows-1  ;
- 
-   if (endrow >= totalrows)
-    endrow=totalrows-1;
-      
-   for(int j=startrow;j<=endrow;j++) { 
-    id= ((Long)keyid.elementAt(j)).longValue();
-    stocki= ((Integer)stock.elementAt(j)).intValue();
-    
-    pricestr= nf.format(price.elementAt(j)); 
-    dpricestr=nf.format(dprice.elementAt(j)); 
- 
-    out.println("<TR ><TH rowspan=4>");
-    out.println("<A href=JavaScript:view(\""+large.elementAt(j)+"\")>"); 
-  
-    out.println("<TD bgcolor=#DFEDFF>");
-    out.println("<FONT face='돋움체' color=black>");
-    
-    
-    out.println("</FONT></TD></TR>");
-    out.println("<TR>");
-    out.println("<TD   bgcolor=#eeeeee>");
-    
-    
-    out.println("</TD></TR>"); 
-    out.println("<TR><TD align=right>");
-   
-    out.println("</TD></TR>"); 
-    out.println("<FORM method=post name=search action=\"sale.jsp\">");
-	out.println("<TR>");
-    out.println("<TD align=right >");
-
+<%
     if (stocki >0) { 
      
    
     	
-     out.println("<INPUT type=hidden name=id value="+id+">");
+     //out.println("<INPUT type=hidden name=id value="+id+">");
      out.println("<INPUT type=hidden name=go value="+where+">");
      out.println("<INPUT type=hidden name=cat value="+ca+">");
      out.println("<INPUT type=hidden name=pname value="+pn+">");
@@ -226,26 +174,24 @@
     } else
      out.println("품절");
     out.println("</TD></TR></FORM>"); 
-   }
-   rs.close();    
-  }
+   }  
   out.println("</TABLE>");
-  st.close();
-  con.close();
  } catch (SQLException e) {
   out.println(e);
- } 
+ } finally{
+	 DBCon.close();
+ }
  
  
 %>
  
       <div id="item_write">
-           <div class="name"><%out.println(pname);%></div>
+           <div class="name"><%=pName%></div>
            <div class="details">1. 본 상품은 매주 목요일에 발송. <br>&nbsp;&nbsp;&nbsp;&nbsp;금요일에 수령 가능합니다. <br><br>
             2. 한박스에 4개가 들어갑니다.<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<br>
             3. 아이스보냉백은 선택 사항입니다.</div>
-            <div id="price"><%out.println("판매가: "+ dpricestr+"원"); %> </div>
+            <div id="price"><%=dPrice%> </div>
             <div id="express_dt">
             적립금 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2%<br><br>
             배송비 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2,000원
@@ -274,7 +220,7 @@
            
             </div>
             <div class="text">
-            <%out.println( description); %>
+            <%=descript%>
        </div>
        
    

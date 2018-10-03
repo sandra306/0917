@@ -1,3 +1,4 @@
+<%@page import="com.somin.shop.common.DBCon"%>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %> 
 <% request.setCharacterEncoding("utf-8"); %>
@@ -94,23 +95,60 @@
         <main>
             <section>
                 <div id="macaroon_items">
-                    <a href="shop_1.jsp""><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
+<%
+String url = "/upload/";
+String sql = "select * from 20162422_product  where category=11";
+try{
+ResultSet rs = DBCon.execSql(sql);
+while(rs.next()){
+	String fileName = url + rs.getString("small");
+	int id = rs.getInt("id");
+%>
+                    <a href="shop_1.jsp?id=<%=id%>"><img src="<%=fileName%>" style="width:450px;height:450px"></a>
+<%
+}
+}finally{
+DBCon.close();
+}
+%>
                  </div>
             </section>
             <section>
                 <div id="ttongcaroon_items">
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
+<%
+ sql = "select * from 20162422_product  where category=22";
+try{
+ResultSet rs = DBCon.execSql(sql);
+while(rs.next()){
+	String fileName = url + rs.getString("small");
+	int id = rs.getInt("id");
+%>
+                    <a href="shop_1.jsp?id=<%=id%>"><img src="<%=fileName%>" style="width:450px;height:450px"></a>
+<%
+}
+}finally{
+DBCon.close();
+}
+%>
                 </div>
             </section>
             <section>
                 <div id="daku_items">
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
-                    <a href="#"><img src="http://placehold.it/450x450"></a>
+<%
+ sql = "select * from 20162422_product  where category=33";
+try{
+ResultSet rs = DBCon.execSql(sql);
+while(rs.next()){
+	String fileName = url + rs.getString("small");
+	int id = rs.getInt("id");
+%>
+                    <a href="shop_1.jsp?id=<%=id%>"><img src="<%=fileName%>" style="width:450px;height:450px"></a>
+<%
+}
+}finally{
+DBCon.close();
+}
+%>
                 </div>
             </section>
            

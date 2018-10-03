@@ -12,8 +12,8 @@
 	
 	ServletContext context = this.getServletContext();
 	
-	realFolder=request.getRealPath(saveFolder);
-	
+	//realFolder=request.getRealPath(saveFolder);
+	realFolder="C:/shop/works/git/0917/WebContent/upload";
 	MultipartRequest multi = null;
 	DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 	multi = new MultipartRequest(request,realFolder,Maxsize,encType,new DefaultFileRenamePolicy());
@@ -70,11 +70,13 @@
 		 Enumeration files=multi.getFileNames();
 		 String fname1 = (String) files.nextElement();
 		 String filename1 = multi.getFilesystemName(fname1);
+		 String fname2 = (String) files.nextElement();
+		 String filename2 = multi.getFilesystemName(fname2);
 
 		 sql="insert into 20162422_product(id,category,wname,pname,price,downprice";
-		 sql = sql+",inputdate,stock,small,description) values ("+id+",'";
+		 sql = sql+",inputdate,stock,small,description,large) values ("+id+",'";
 		 sql = sql+cat+"','"+wn+"','"+pn+"',"+price+","+dprice+",'"+ymd;
-		 sql = sql+"',"+stock+",'"+filename1+"','"+des+"')";
+		 sql = sql+"',"+stock+",'"+filename1+"','"+des+"','" + filename2 + "')";
 		 
 		 cnt = st.executeUpdate(sql);
 		 

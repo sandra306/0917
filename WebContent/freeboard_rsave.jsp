@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %> 
 <% request.setCharacterEncoding("utf-8"); %>
+<script>
+alert(1);
+</script>
 <%
  String na = request.getParameter("name");
  String em = request.getParameter("email");
@@ -60,13 +63,18 @@
    sql= sql + "content,inputdate,masterid ,replynum,step)" ; 
    sql= sql + " values(" +id + ", '" +  na + "','" + pw + "','"+ em  ;
    sql= sql + "','" + sub + "','" + cont + "','" + ymd + "'," +mid+"," ;
-   sql= sql + ","+rnum+ "," + step+")";
- 
+   sql= sql + +rnum+ "," + step+")";
+System.out.println(sql);
    cnt = st.executeUpdate(sql); 
    st.close();
    con.close();
+%>
+<script>
+alert("저장 완료")
+</script>
+<%
   } catch (SQLException e) {
-   out.println(e);
+   System.out.println(e);
   }
   response.sendRedirect("freeboard_list.jsp?go="+request.getParameter("page"));
  %>

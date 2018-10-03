@@ -199,7 +199,7 @@
     if (stepi > 0 ) {
      for(int count=0; count < stepi; count++)
       out.print("&nbsp;&nbsp;");
-     out.println("<IMG name=icon"+imgcount+ " src=image/arrow.gif>");
+     out.println("<IMG name=icon"+imgcount+ " src=img/arrow.gif>");
      out.print("<A href=freeboard_read.jsp?id=");
      out.print(keyid.elementAt(j) + "&page=" + where );
      out.print(" onmouseover=\"rimgchg(" + imgcount + ",1)\"");
@@ -233,7 +233,7 @@
 <!--<TABLE border=0 width=600 cellpadding=0 cellspacing=0>
  <TR>
   <TD align=right valign=bottom>
-   <A href="freeboard_write.htm"><img src="image/write.gif" width="66" height="21" border="0"></A>
+   <A href="freeboard_write.htm"><img src="img/write.gif" width="66" height="21" border="0"></A>
    </TD>
   </TR>
  </TABLE>-->
