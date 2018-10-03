@@ -81,7 +81,7 @@
         %>
     </header>
     <div id="wrap">
-<a href="main.jsp">메인으로</a>
+<a href="product_list.jsp">목록으로</a> 
 
 <form method="post" action="product_save.jsp" enctype="multipart/form-data">
 <table boarder=0 width=300>
