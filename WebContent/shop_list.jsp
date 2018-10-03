@@ -93,7 +93,7 @@
     </header>
     <div class="main">
         <main>
-            <section>
+            <section> 
                 <div id="macaroon_items">
 <%
 String url = "/upload/";

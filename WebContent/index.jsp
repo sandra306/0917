@@ -1,5 +1,43 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
+<%
+  Connection conn=null;
+  Statement st=null;
+  //jdbc드라이브 로드
+  Class.forName("com.mysql.jdbc.Driver");
+  //데이터베이스 연결
+  conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb","root","multi2018");
+  st=conn.createStatement();
+  //quary작업
+  String sql= null;
+  //테이블 생성 시작
+  sql="create table 20162422_board(id int primary key, name varchar(10) not null, password varchar(10),email	varchar(50),subject	varchar(50) not null, content text not null, inputdate varchar(20) not null, masterid	int default 0,  replynum	int default 0,  step int default 0)";
+  st.executeUpdate(sql); //sql처리
+
+  sql="create table 20162422_item( orderid int not null, mynum int not null, prodid int not null, pname varchar(40) , quantity int default 0, price int default 0)";
+  st.executeUpdate(sql); //sql처리
+  sql="create table 20162422_member(user_id varchar(20) not null primary key, passwd varchar(10) not null, passwd_ch varchar(10) not null, user_name char(8) not null, email char(40) not null ,  addr varchar(40) not null, phone varchar(15) not null, is_admin char(5) null)";
+  st.executeUpdate(sql); //sql처리
+
+  sql="create table 20162422_product(id int primary key, category varchar(10) not null, wname varchar(20) not null, pname varchar(20) not null, price int not null, downprice int default 0, inputdate varchar(50), stock int default 0,  description text, small varchar(20),large varchar(20) null)";
+  st.executeUpdate(sql); //sql처리
+
+  sql="create table 20162422_saleorder(id int primary key,name varchar(20) not null, orderdate varchar(20) not null, addr varchar(50) not null, phone varchar(20) not null, pay varchar(10) not null, cardno varchar(20) not null, prodcount int default 0, total int default 0)";
+  st.executeUpdate(sql); //sql처리
+  //테이블 생성 완료
+  
+  //기초 데이터 입력 시작
+  sql="insert into 20162422_member (user_id , passwd,passwd_ch, user_name, email, addr, phone, is_admin) values ('admin', '1234','1234','관리자', ' ',' ',' ', 'Y')";
+  st.executeUpdate(sql); //sql처리
+  //기초 데이터 입력 완료
+  conn.close();//Connection 객체해제
+  st.close();//Statement 해제
+  
+%>
 <!DOCTYPE html>
 <html lang="ko" >
 <head>

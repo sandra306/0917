@@ -8,6 +8,8 @@
 </HEAD>
 <BODY>
 <%
+String userId = (String)session.getAttribute("user_id");
+System.out.println(userId);
  String sql=null;
  Connection con= null;
  PreparedStatement st =null;
@@ -90,7 +92,13 @@
    <tr> 
     <td align="right" width="450"><A href="freeboard_list.jsp?go=<%=request.getParameter("page") %>"> 
      <img src="img/list.jpg" border=0></a></td>
+ <%
+ if(userId!=null && userId.equals("admin")){ 
+ %>
 	<td width="70" align="right"><A href="freeboard_rwrite.jsp?id=<%= request.getParameter("id")%>&page=<%=request.getParameter("page")%>"> <img src="img/reply.jpg" border=0></A></td>
+<%
+ }
+%>
 	<td width="70" align="right"><A href="freeboard_upd.jsp?id=<%=id%>&page=1"><img src="img/edit.jpg" border=0></A></td>
 	<td width="70" align="right"><A href="freeboard_del.jsp?id=<%=id%>&page=1"><img src="img/del.jpg"  border=0></A></td>
    </tr>

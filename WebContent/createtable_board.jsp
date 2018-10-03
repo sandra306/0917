@@ -19,7 +19,13 @@
   String sql= null;
   sql="create table 20162422_board(id int primary key, name varchar(10) not null, password varchar(10),email	varchar(50),subject	varchar(50) not null, content text not null, inputdate varchar(20) not null, masterid	int default 0,  replynum	int default 0,  step int default 0)";
   st.executeUpdate(sql); //sql처리
-  
+
+  sql="create table 20162422_item( orderid int not null, mynum int not null, prodid int not null, pname varchar(40) , quantity int default 0, price int default 0)";
+  st.executeUpdate(sql); //sql처리
+  sql="create table 20162422_member(user_id varchar(20) not null primary key, passwd varchar(10) not null, passwd_ch varchar(10) not null, user_name char(8) not null, email char(40) not null ,  addr varchar(40) not null, phone varchar(15) not null, is_admin char(5) null)";
+  st.executeUpdate(sql); //sql처리
+  sql="insert into 20162422_member (user_id , passwd,passwd_ch, user_name, email, addr, phone, is_admin) values ('admin', '1234','1234','관리자', ' ',' ',' ', 'Y')";
+  st.executeUpdate(sql); //sql처리
   conn.close();//Connection 객체해제
   st.close();//Statement 해제
   

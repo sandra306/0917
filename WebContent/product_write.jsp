@@ -1,3 +1,4 @@
+<%@page import="com.somin.shop.common.DBCon"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page language="java" import="java.sql.*,java.text.*, java.lang.*" %> 
@@ -98,9 +99,14 @@
 		<td bgcolor="#fffff5">
 		<font size="-1" color="#fffff5">
 		<select name="category" size="1">
-            <option value=11>마카롱</option>
-            <option value=22>뚱카롱</option>
-            <option value=33>다쿠와즈</option>
+<%
+ResultSet rs = DBCon.execSql("select * from 20162422_category");
+while(rs.next()){
+%>
+            <option value=<%=rs.getInt("category") %>><%=rs.getString("catename") %></option>
+<%
+}
+%>
 		</select>
 		</font>
 		</td>
