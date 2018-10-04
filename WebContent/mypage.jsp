@@ -65,9 +65,9 @@
         <div class="img">
             <a href="mem_updateform.jsp"><img src="img/modify.png"></a>
             <a href="#"><img src="img/letter.png"></a>
-            <a href="#"><img src="img/order.png"></a>
+            <a href="order_list.jsp"><img src="img/order.png"></a>
             <a href="sale_list.jsp"><img src="img/cart_icon.png"></a>
-            <a href="#"><img src="img/address.png"></a>
+            <a href="tms_client_list.jsp"><img src="img/address.png"></a>
             <a href="mem_deleteform.jsp"><img src="img/withdrawal.png"></a>
         </div>
     </div>

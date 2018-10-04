@@ -73,7 +73,7 @@
         <div id="admin_page">ADMIN PAGE</div>
         <div class="img">
             <a href="product_list.jsp"><img src="img/admin_item.png"></a>
-            <a href="#"><img src="img/admin_express.png"></a>
+            <a href="tms_list.jsp"><img src="img/admin_express.png"></a>
             <a href="all.jsp"><img src="img/admin_member.png"></a>
             <a href="#"><img src="img/admin_qna.png"></a>
             <a href="#"><img src="img/admin_notice.png"></a>

@@ -22,7 +22,7 @@
     <SCRIPT language="javascript">
  function view(temp) {
   if (temp.length >0) { 
-   url = "/upload/" + temp;
+   url = "upload/" + temp;
    window.open(url, "win", "height=350,width=450,toolbar=0,menubar=0,scrollbars=1,resizable=1,status=0");
   }
  }
@@ -96,7 +96,7 @@
             <section> 
                 <div id="macaroon_items">
 <%
-String url = "/upload/";
+String url = "upload/";
 String sql = "select * from 20162422_product  where category=11";
 try{
 ResultSet rs = DBCon.execSql(sql);

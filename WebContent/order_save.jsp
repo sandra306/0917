@@ -79,10 +79,22 @@
     sql = sql + " values("+id+","+num+","+pid+",'"+pname+"',"+qty+","+ price+")" ;
     cnt2 = cnt2+st.executeUpdate(sql);
    }
+   
 
+   sql = "select max(id) from 20162422_tms";
+   rs = st.executeQuery(sql);
+   long tmsId = 1;
+   if (rs.next()) {
+	   tmsId= rs.getLong(1) + 1 ;
+   }
+   String userId = (String)session.getAttribute("user_id");
+   sql = "insert into 20162422_tms(id,member_id, so_id,confirm_deposit,status_shipping)" ;
+   sql = sql + " values("+tmsId+",'"+userId+"',"+id+",0,0)" ;
+   st.executeUpdate(sql);
+   
    if (cnt2==count) {
     out.println("주문이 정상적으로 처리되었습니다.");
-    session.invalidate();
+    //session.invalidate();
     out.println("[<A href=\"order_list.jsp?id="+id+"\">주문서보기</A>]");
    } else {
     out.println("상품에 대한 주문이 처리되지 못했습니다.");

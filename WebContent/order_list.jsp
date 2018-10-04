@@ -23,9 +23,9 @@
  
  if (request.getParameter("id")!=null) {
   id = Long.parseLong(request.getParameter("id"));
-  cond = " where id="+id;
+  cond = " and s.id="+id;
  } else 
-  cond = " order by id desc";  
+  cond = " order by s.id desc";  
   
  NumberFormat nf= NumberFormat.getNumberInstance();
  String totalstr="";
@@ -45,8 +45,9 @@
  try {
   st1 = con.createStatement();
   st2 = con.createStatement();
- 
-  sql = "select * from 20162422_saleorder"+ cond;
+  String user_id = (String)session.getAttribute("user_id");
+  sql = "select s.* from 20162422_saleorder s, 20162422_tms t where s.id=t.so_id and t.member_id='" +user_id+"' "+ cond;
+  System.out.println(sql);
   rs1 = st1.executeQuery(sql);
 
   if (!(rs1.next())) 

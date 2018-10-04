@@ -22,7 +22,7 @@
     <SCRIPT language="javascript">
  function view(temp) {
   if (temp.length >0) { 
-   url = "/upload/" + temp;
+   url = "upload/" + temp;
    window.open(url, "win", "height=350,width=450,toolbar=0,menubar=0,scrollbars=1,resizable=1,status=0");
   }
  }
@@ -91,7 +91,7 @@
  Vector large=new Vector();
  Vector description=new Vector();
  
- String url = "/upload/";
+ String url = "upload/";
  
  NumberFormat nf= NumberFormat.getNumberInstance();
  

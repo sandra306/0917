@@ -7,7 +7,7 @@
 
 <%
   Boolean init = (Boolean)application.getAttribute("tableInit");
-
+System.out.println("init : " + init);
   if(init==null){
 	  Connection conn=null;
 	  Statement st=null;
@@ -33,7 +33,7 @@
 	  }
 	  try{ 
 		  sql="create table 20162422_member(user_id varchar(20) not null primary key, passwd varchar(10) not null, passwd_ch varchar(10) not null, user_name char(8) not null, email char(40) not null ,  addr varchar(40) not null, phone varchar(15) not null, is_admin char(5) null)";
-	  	st.executeUpdate(sql); //sql처리
+	  	  st.executeUpdate(sql); //sql처리
 	  }catch(SQLException e){
 		  
 	  }
@@ -45,6 +45,13 @@
 	  }
 	  try{
 		  sql="create table 20162422_saleorder(id int primary key,name varchar(20) not null, orderdate varchar(20) not null, addr varchar(50) not null, phone varchar(20) not null, pay varchar(10) not null, cardno varchar(20) not null, prodcount int default 0, total int default 0)";
+		  st.executeUpdate(sql); //sql처리
+	  }catch(SQLException e){
+		  
+	  }
+	  try{
+		  sql="create table 20162422_tms(id int primary key,member_id varchar(20) not null, so_id int not null,confirm_deposit int default 0, status_shipping int default 0, shipping_date varchar(20), delivery_date varchar(20))";
+		  //                배송 관리 테이블(배송 아이디, 유저아이디(상품주문한), 상품주문 아이디, 입금확인(0:미확인, 1:확인), 배송상태(0:상품준비중,1:배송중,2:배송완료), 배송일자, 완료일자);
 		  st.executeUpdate(sql); //sql처리
 	  }catch(SQLException e){
 		  

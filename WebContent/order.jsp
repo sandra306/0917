@@ -8,7 +8,7 @@
  
  NumberFormat nf= NumberFormat.getNumberInstance();
  String totalstr =  nf.format(total);   
-
+ String user_name = (String)session.getAttribute("user_name");
 %>
 <HTML>
 <HEAD>
@@ -32,8 +32,19 @@
 </SCRIPT> 
 </HEAD>
 <BODY>
+<script>
+	function syncSession(){
+		var user_name = '<%=session.getAttribute("user_name")%>';
+		var addr = '<%=session.getAttribute("addr")%>';
+		var phone = '<%=session.getAttribute("phone")%>';
+		document.querySelector('input[name=wname]').value = user_name;
+		document.querySelector('input[name=addr]').value = addr;
+		document.querySelector('input[name=phone]').value = phone;
+	}
+</script>
 <P>
-[<A href= "sale_list.jsp">장바구니 다시 보기</A>] 
+[<A href= "sale_list.jsp">장바구니 다시 보기</A>]<br>
+<input type="checkbox" onclick="syncSession()">주문정보와 일치
 <FORM method=post action="order_save.jsp">
 <TABLE border=0 width=400 >
  <TR>
@@ -46,11 +57,11 @@
    <FONT size=-1 color=white>이름</FONT>
   </TH>
   <TD bgcolor=#eeeeee>
-   <INPUT type=text name=wname size=30>
+   <INPUT type=text name=wname size=30 >
   </TD>
  </TR>
  <TR>
-  <TH width=30% bgcolor=#0033cc>
+  <TH width=30% bgcolor=#0033cc> 
    <FONT size=-1 color=white>결제 유형</FONT>
   </TH>
   <TD bgcolor=#eeeeee>

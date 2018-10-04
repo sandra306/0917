@@ -107,7 +107,7 @@
  
  Vector userid=new Vector();
  
- String url = "/upload/";
+ String url = "upload/";
  
  NumberFormat nf= NumberFormat.getNumberInstance();
  

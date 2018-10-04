@@ -82,7 +82,9 @@
     </header>
     <div id="wrap">
 <a href="product_list.jsp">목록으로</a> 
-
+<%
+String userId = (String)session.getAttribute("user_id");
+%>
 <form method="post" action="product_save.jsp" enctype="multipart/form-data">
 <table boarder=0 width=300>
 	<tr>
@@ -91,7 +93,7 @@
 	<tr>
 		<th width=20% bgcolor="#fffff5">
 		<font size=-1 color="gray">작성자</font></th>
-		<td bgcolor="#fffff5"><input type="text" name="wname" size="20"></td>
+		<td bgcolor="#fffff5"><input type="text" name="wname" size="20" value="<%=userId%>" disabled></td>
 	</tr>
 	<tr>
 		<th width="20%" bgcolor="#f0616e">

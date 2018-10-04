@@ -8,7 +8,7 @@ try {
 %>
 <script>
 	alert("로그인이 필요합니다.");
-	location.href="/loginform.jsp";
+	location.href="loginform.jsp";
 </script>
 <%
 	}else{
