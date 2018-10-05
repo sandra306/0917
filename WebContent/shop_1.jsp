@@ -1,4 +1,3 @@
-<%@page import="com.somin.shop.common.DBCon"%>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %> 
 <% request.setCharacterEncoding("utf-8"); %>
@@ -138,9 +137,15 @@ String sql = "select * from 20162422_product  where id=" + request.getParameter(
 long dPrice = 0;
 String pName  = "";
 String descript = "";
+Connection con = null;
+Statement st = null;
 
 try{
-	ResultSet rs = DBCon.execSql(sql);
+
+ 	Class.forName("com.mysql.jdbc.Driver");       
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webdb", "root", "multi2018");
+	st = con.createStatement();
+	ResultSet rs = st.executeQuery(sql);
   if (!(rs.next()))  
    	out.println("상품이 없습니다");
   else {
@@ -180,7 +185,8 @@ try{
  } catch (SQLException e) {
   out.println(e);
  } finally{
-	 DBCon.close();
+	 con.close();
+	 st.close();
  }
  
  
