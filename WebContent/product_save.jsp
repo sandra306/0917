@@ -13,7 +13,8 @@
 	ServletContext context = this.getServletContext();
 	
 	//realFolder=request.getRealPath(saveFolder);
-	realFolder="C:/jsp_study/workspace/git/0917/WebContent/upload";
+	realFolder="C:/somin/works/git/0917/WebContent/upload";
+	
 	MultipartRequest multi = null;
 	DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 	multi = new MultipartRequest(request,realFolder,Maxsize,encType,new DefaultFileRenamePolicy());
