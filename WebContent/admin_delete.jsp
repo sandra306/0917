@@ -11,7 +11,7 @@
 
 <%
 	String user_id=null;
-	if((session.getAttribute("user_id")==null) || (!((String)session.getAttribute("user_id")).equals("admin"))){
+	if((session.getAttribute("user_id")==null) || (!((String)session.getAttribute("is_admin")).equals("Y"))){
 		out.println("<script>");
 		out.println("lication.href='loginForm.jsp'");
 		out.println("</script>");

@@ -14,7 +14,11 @@
     <script src="js/jquery.mousewheel.min.js"></script>
     <script src="js/shop.js"></script>
     <script src="js/index.js"></script>
-
+<script>
+function deleteForm(f){
+	alert(f);
+}
+</script>
 </HEAD>
 <BODY>
  <header>
@@ -45,7 +49,7 @@
             <a href="mypage.jsp" id="cart">MYPAGE</a>
         </div>
 <%
-	} else if (user_id.equals("admin")) {
+	} else if (is_admin.equals("Y")) {
 %>
 	   <div id="logo"><a href="index.jsp"><img src="img/main_logo.png"></a></div>
         <div id="login_cart">
@@ -65,30 +69,19 @@
         %>
     </header>
 <div id="wrap">
-<FORM method=post name=search action="product_list.jsp">
+<FORM method=post name=search action="tms_list.jsp">
 <TABLE border=0 width=95%>
  <TR>
   <TD align=center>
-   <FONT size=-1>상품명으로 찾기</FONT>
+   <FONT size=-1>주문자로 찾기</FONT>
    <INPUT type=text name=pname>
    <INPUT type=submit value="검색">
   </TD>
  </TR>
- <TR>
-  <TH>
-   <FONT size=-1>
-    <A href="adminpage.jsp">메인으로</A>
-    <A href="product_list.jsp">전체</A>
-    <A href="product_list.jsp?cat=11">마카롱</A>
-    <A href="product_list.jsp?cat=22">뚱카롱</A>
-    <A href="product_list.jsp?cat=33">다쿠와즈</A>
-    <A href="product_write.jsp">등록하기</A>
-   </FONT>
-  </TH>
- </TR>
 </TABLE>
 </FORM>
-
+<br>
+<br>
 <CENTER>
 <TABLE border=0 width=100% cellpadding=4 cellspacing=4 style="font-size:10pt">
  <TR>
@@ -110,6 +103,11 @@
   <TH width=10% bgcolor=#DFEDFF>
    <FONT color=black face=굴림>
     <NOBR>주문자(이름)</NOBR>
+   </FONT>
+  </TH>
+  <TH width=10% bgcolor=#DFEDFF>
+   <FONT color=black face=굴림>
+    <NOBR>주문총액</NOBR>
    </FONT>
   </TH>
   <TH width=10% bgcolor=#DFEDFF>
@@ -140,7 +138,11 @@
   
  </TR>
 <% 
-
+String cond = "";
+ String pname = request.getParameter("pname");
+ if(pname!=null && !pname.trim().equals("")){
+	 cond = " and s.name like '%" + pname + "%'";
+ }
  Vector member_id=new Vector();
  Vector tms_id=new Vector();
  Vector so_id=new Vector();
@@ -150,6 +152,7 @@
  Vector delivery_date=new Vector();
  Vector userId =new Vector();
  Vector name =new Vector();
+ Vector total =new Vector();
  String category=null;
  
  long id=0;
@@ -202,9 +205,11 @@
  
  try {
   st = con.createStatement();
-  String sql = "select t.*,m.user_id, s.name from 20162422_tms t, 20162422_saleorder s, 20162422_member m";
+  String sql = "select t.*,m.user_id, s.name,s.total from 20162422_tms t, 20162422_saleorder s, 20162422_member m";
   sql += " where t.member_id=m.user_id and s.id=t.so_id";
+  sql += cond;
   sql += " order by id";
+  System.out.println(sql);
   rs = st.executeQuery(sql);
   if (!(rs.next()))  {
    out.println("상품이 없습니다");
@@ -219,6 +224,7 @@
 	   delivery_date.addElement(rs.getString("delivery_date")==null?"":rs.getString("delivery_date"));
 	   userId.addElement(rs.getString("user_id"));
 	   name.addElement(rs.getString("name"));
+	   total.addElement(rs.getLong("total"));
    }while(rs.next());
 
    totalrows = tms_id.size();
@@ -233,6 +239,7 @@
    for(int j=startrow;j<=endrow;j++) {
     id= ( (Long)tms_id.elementAt(j) ).longValue();  
   
+    out.println("<form action=\"tms_update.jsp\" method=\"post\">");
     out.println("<TR>");
     out.println("<TH width=5%  bgcolor=#eeeeee>");
     out.println(j+1+"</TH>");
@@ -244,6 +251,8 @@
     out.println(so_id.elementAt(j)+ "</TD>");
     out.println("<TD width=20% bgcolor=#eeeeee align=center>"); 
     out.println(member_id.elementAt(j)+ "("+name.elementAt(j)+")</TD>");
+    out.println("<TD width=10% bgcolor=#eeeeee align=center>"); 
+    out.println(total.elementAt(j) + "</TD>");
     out.println("<TD width=10% bgcolor=#eeeeee align=center>");
     out.println("<select name=\"confirm_deposit\">");
     out.println("<option value=\"0\" "+((int)confirm_deposit.elementAt(j)==0?"selected":"")+">미확인</option>");
@@ -262,11 +271,12 @@
     out.println("<TD width=10% bgcolor=#eeeeee>");
     out.println("<input type=\"date\" name=\"delivery_date\" value=\"" + delivery_date.elementAt(j) +"\"></TD>");
     out.println("<TD width=15% bgcolor=#eeeeee>");
-    out.print("<A href=\"tms_update.jsp?id="+id + "&go=" + where);
-    out.print("\">"+"수정</a> ");  
-    out.print("<A href=\"tms_delteform.jsp?id="+id + "&go=" + where);
-    out.print("\">"+"삭제</a></td>");   
+    out.print("<button>수정</button>");
+    out.print(" <button type='button' onclick=\"location.href='tms_delteform.jsp?id="+id + "&go=" + where + "'\">");
+    out.print("삭제</button></td>");   
     out.println("</TR>");
+    out.println("<input type='hidden' name='id' value='" + id + "'>");
+    out.println("</form>");
    }
    rs.close();    
   }

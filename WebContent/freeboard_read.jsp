@@ -9,6 +9,7 @@
 <BODY>
 <%
 String userId = (String)session.getAttribute("user_id");
+String is_admin = (String)session.getAttribute("is_admin");
 System.out.println(userId);
  String sql=null;
  Connection con= null;
@@ -93,7 +94,7 @@ System.out.println(userId);
     <td align="right" width="450"><A href="freeboard_list.jsp?go=<%=request.getParameter("page") %>"> 
      <img src="img/list.jpg" border=0></a></td>
  <%
- if(userId!=null && userId.equals("admin")){ 
+ if(userId!=null && is_admin.equals("Y")){ 
  %>
 	<td width="70" align="right"><A href="freeboard_rwrite.jsp?id=<%= request.getParameter("id")%>&page=<%=request.getParameter("page")%>"> <img src="img/reply.jpg" border=0></A></td>
 <%
