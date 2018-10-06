@@ -47,7 +47,7 @@
             <a href="#" id="cart">CART</a>
         </div>
 <%
-	} else if (user_id.equals("admin")) {
+	} else if (is_admin.equals("Y")) {
 %>
 	   <div id="logo"><a href="index.jsp"><img src="img/main_logo.png"></a></div>
         <div id="login_cart">
